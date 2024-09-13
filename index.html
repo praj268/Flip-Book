@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Book</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer" type="text/javascript"></script>
+
+    <script type=" text/javascript " src="turn.min.js "></script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+        
+        .container {
+            background-color: aqua;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        /* Flip book container */
+        
+        #flip-book {
+            width: 600px;
+            height: 400px;
+            background-color: white;
+            box-shadow: 0 4px 10px #666;
+        }
+        /* Arrow button styles */
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 2em;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        
+        .left-arrow {
+            left: 10px;
+        }
+        
+        .right-arrow {
+            right: 10px;
+        }
+        /* Individual pages */
+        
+        #flip-book .page {
+            background-color: white;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+        }
+        
+        #flip-book h1 {
+            text-align: center;
+        }
+        
+        #flip-book p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left arrow -->
+        <button class="arrow left-arrow">&#9664;</button>
+
+        <!-- Flip book -->
+        <div id="flip-book">
+
+            <div>
+                <h1>First Page</h1>
+                <img src="image.jpg" alt="Sample Image" width="100%" height="100%">
+            </div>
+
+            <div>
+                <h1>Second Page</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            </div>
+
+            <div>
+                <h1>Third Page</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            </div>
+
+            <div>
+                <h1>Fourth Page</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            </div>
+
+            <div>
+                <h1>Fifth Page</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            </div>
+
+            <div>
+                <h1>Last Page</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            </div>
+
+        </div>
+
+        <!-- Right arrow -->
+        <button class="arrow right-arrow">&#9654;</button>
+    </div>
+
+    <script type="text/javascript">
+        // Initialize the flip book
+        $('#flip-book').turn({
+            width: 600,
+            height: 400,
+            autoCenter: true,
+            duration: 1000
+        });
+
+        // Left arrow click - flip to previous page
+        $('.left-arrow').click(function() {
+            $('#flip-book').turn('previous');
+        });
+
+        // Right arrow click - flip to next page
+        $('.right-arrow').click(function() {
+            $('#flip-book').turn('next');
+        });
+    </script>
+
+</body>
+
+</html>
